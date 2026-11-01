@@ -4,10 +4,10 @@
 
 Made by Fumbo.
 
-> **Vorabversion 0.1.0:** Benötigt den neuen lokalen API-Server im FumboClient
-> (Entwicklungsstand 1.24.0, API v1). **Das Client-Update wurde noch nicht
-> veröffentlicht.** Die öffentlichen älteren Client-Versionen funktionieren damit
-> nicht. Dieses Repository enthält nur die Home-Assistant-Integration, keine
+> **Integration 0.1.0:** Benötigt FumboClient ab **1.24.0** mit lokaler API v1.
+> [Client herunterladen](https://github.com/kingfabi3855/FumboClient/releases/tag/v1.24.0).
+> Ältere Client-Versionen funktionieren damit nicht.
+> Dieses Repository enthält nur die Home-Assistant-Integration, keine
 > Minecraft-JAR und keinen Client-/Link-Backend-Quellcode.
 
 ## So funktioniert es
@@ -45,7 +45,7 @@ aktuelle unterstützte Testversion, siehe `requirements_test.txt`.
 
 ## Im Minecraft-Client
 
-1. Den noch unveröffentlichten Client-Build mit lokaler API installieren.
+1. FumboClient ab 1.24.0 mit lokaler API installieren.
 2. **H → Einstellungen → Home Assistant** öffnen.
 3. **Integration: AN** wählen. Läuft HA auf einem anderen Gerät, **Erreichbar: LAN**
    aktivieren. Standard ist aus Sicherheitsgründen nur der eigene PC.
@@ -161,7 +161,7 @@ Aufgrund deaktivierter Sensorkategorien nicht erhobene Warnungen entfallen.
 | Keine Schalter | Master-Fernsteuerung und gewünschte Kategorie im Client speichern |
 | Neue Entität nicht sichtbar | Poll abwarten; ggf. in der HA-Entitätenliste prüfen |
 | HACS findet das Repository nicht | Als **Integration** unter benutzerdefinierten Repositories hinzufügen |
-| Client 1.23.1 | Noch inkompatibel; API-Client-Update ist bewusst noch nicht veröffentlicht |
+| Client 1.23.1 | Inkompatibel; auf FumboClient 1.24.0 oder neuer aktualisieren |
 
 ## Entwicklung
 
