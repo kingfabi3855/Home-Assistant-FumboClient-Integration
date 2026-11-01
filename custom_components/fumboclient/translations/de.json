@@ -1,0 +1,13 @@
+{
+  "title": "FumboClient",
+  "config": {
+    "step": {
+      "user": {"title": "Mit FumboClient verbinden", "description": "In Minecraft unter H → Einstellungen → Home Assistant den lokalen Server einschalten. Für einen anderen HA-Rechner LAN-Zugriff aktivieren. Hier die LAN-IP des Minecraft-PCs eintragen, nicht die Home-Assistant-Adresse. Kein MQTT-Broker nötig.", "data": {"host": "LAN-IP des Minecraft-PCs", "port": "API-Port des Clients", "token": "Kopplungstoken"}},
+      "reconfigure": {"title": "Client-Verbindung ändern", "description": "Adresse und aktuellen Kopplungstoken derselben Client-Installation eintragen.", "data": {"host": "LAN-IP des Minecraft-PCs", "port": "API-Port des Clients", "token": "Kopplungstoken"}},
+      "reauth_confirm": {"title": "FumboClient erneut koppeln", "description": "Aktuellen Token im Minecraft-Client kopieren. Auch die optionale Freigabe der Home-Assistant-IP prüfen.", "data": {"host": "LAN-IP des Minecraft-PCs", "port": "API-Port des Clients", "token": "Kopplungstoken"}}
+    },
+    "error": {"cannot_connect": "Client nicht erreichbar. Minecraft, LAN-Zugriff, IP, Port und Firewall prüfen.", "invalid_auth": "Token ungültig oder HA-IP im Client nicht erlaubt.", "invalid_input": "Lokale IP, Port 1024–65535 und den 64-stelligen Kopplungstoken verwenden.", "invalid_response": "Keine kompatible lokale FumboClient-API (Version 1)."},
+    "abort": {"already_configured": "Diese Client-Installation ist bereits eingerichtet.", "wrong_device": "Dies ist eine andere Client-Installation. Bitte separat hinzufügen.", "reauth_successful": "Kopplung erfolgreich aktualisiert.", "reconfigure_successful": "Verbindung erfolgreich aktualisiert."}
+  },
+  "options": {"step": {"init": {"title": "Abfrageintervall", "description": "Gemeinsame Client-Daten alle 2–30 Sekunden aktualisieren. Freigaben bleiben im Minecraft-Client.", "data": {"scan_interval": "Abfrageintervall (Sekunden)"}}}}
+}

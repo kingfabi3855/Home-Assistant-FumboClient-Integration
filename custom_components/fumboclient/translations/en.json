@@ -1,0 +1,13 @@
+{
+  "title": "FumboClient",
+  "config": {
+    "step": {
+      "user": {"title": "Connect to FumboClient", "description": "Enable the local server in Minecraft under H → Settings → Home Assistant. For another HA device enable LAN access. Enter the Minecraft PC's LAN IP, not the Home Assistant address. No MQTT broker required.", "data": {"host": "Minecraft PC LAN IP", "port": "Client API port", "token": "Pairing token"}},
+      "reconfigure": {"title": "Update client connection", "description": "Enter the address and current pairing token for the same client installation.", "data": {"host": "Minecraft PC LAN IP", "port": "Client API port", "token": "Pairing token"}},
+      "reauth_confirm": {"title": "Pair FumboClient again", "description": "Copy the current token from the Minecraft client. Check its optional allowed-HA-IP setting.", "data": {"host": "Minecraft PC LAN IP", "port": "Client API port", "token": "Pairing token"}}
+    },
+    "error": {"cannot_connect": "Client unavailable. Check Minecraft, LAN access, IP, port and firewall.", "invalid_auth": "Invalid token or HA IP not allowed by the client.", "invalid_input": "Use a local IP, port 1024–65535 and the 64-character pairing token.", "invalid_response": "Not a compatible FumboClient local API (version 1)."},
+    "abort": {"already_configured": "This client installation is already configured.", "wrong_device": "This is a different client installation. Add it separately.", "reauth_successful": "Pairing updated successfully.", "reconfigure_successful": "Connection updated successfully."}
+  },
+  "options": {"step": {"init": {"title": "Polling", "description": "Refresh shared client state every 2–30 seconds. Permissions are configured in Minecraft.", "data": {"scan_interval": "Polling interval (seconds)"}}}}
+}

@@ -1,0 +1,54 @@
+blueprint:
+  name: FumboClient – Spielereignisse (direkte Integration)
+  description: >-
+    Reagiert auf das native Event-Entity der FumboClient-Integration.
+    Kein MQTT nötig. Wähle die Ereignisse und deine eigenen Aktionen.
+  domain: automation
+  input:
+    event_entity:
+      name: FumboClient-Spielereignis
+      selector:
+        entity:
+          filter:
+            - domain: event
+              integration: fumboclient
+    selected_events:
+      name: Ereignisse
+      default: [low_health, death, left]
+      selector:
+        select:
+          multiple: true
+          options:
+            - {label: Welt betreten, value: joined}
+            - {label: Welt verlassen, value: left}
+            - {label: AFK geworden, value: afk_on}
+            - {label: Nicht mehr AFK, value: afk_off}
+            - {label: Schaden genommen, value: damage}
+            - {label: Gestorben, value: death}
+            - {label: Wenig Leben, value: low_health}
+            - {label: Wenig Hunger, value: low_hunger}
+            - {label: Werkzeug fast kaputt, value: tool_low}
+            - {label: Inventar voll, value: inventory_full}
+            - {label: Spieler brennt, value: fire}
+    chosen_actions:
+      name: Deine Aktionen
+      description: Zum Beispiel Benachrichtigung, Licht oder ein ausdrücklich freigegebener Client-Button.
+      default: []
+      selector:
+        action:
+variables:
+  selected_events: !input selected_events
+triggers:
+  - trigger: state
+    entity_id: !input event_entity
+conditions:
+  - condition: template
+    value_template: >-
+      {{ trigger.from_state is not none
+         and trigger.to_state is not none
+         and trigger.to_state.state not in ['unknown', 'unavailable']
+         and trigger.from_state.state != trigger.to_state.state
+         and trigger.to_state.attributes.get('event_type') in selected_events }}
+actions: !input chosen_actions
+mode: single
+max_exceeded: silent
